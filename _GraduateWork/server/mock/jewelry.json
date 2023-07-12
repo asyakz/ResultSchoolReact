@@ -1,0 +1,42 @@
+[
+  {
+    "_id": "b0be7a31-6de5-4a0b-aa79-8989e0c394b8",
+    "photo":
+      "../../../public/imges/catalog/b0be7a31-6de5-4a0b-aa79-8989e0c394b8.jpg",
+    "name": "Серьги",
+    "price": 1500,
+    "tags": ["7564748hfyekctag01", "jr735gdufirketag02"],
+    "colors": ["40E0D0", "FFFF00"],
+    "bookmark": false
+  },
+  {
+    "_id": "d4ecd03c-2298-455f-8e82-a88cc7fffbcc",
+    "photo":
+      "../../../public/imges/catalog/d4ecd03c-2298-455f-8e82-a88cc7fffbcc.jpg",
+    "name": "Серьги",
+    "price": 1500,
+    "tags": ["7564748hfyekctag01", "jr735gdufirketag02"],
+    "colors": ["00008B", "FF00FF"],
+    "bookmark": false
+  },
+  {
+    "_id": "809638a6-a5ca-4478-9c43-c7c3a3aa1b89",
+    "photo":
+      "../../../public/imges/catalog/809638a6-a5ca-4478-9c43-c7c3a3aa1b89.jpg",
+    "name": "Кулон",
+    "price": 1200,
+    "tags": ["jfegx9574fdsdtag03", "jr735gdufirketag02"],
+    "colors": ["FFFF00"],
+    "bookmark": false
+  },
+  {
+    "_id": "6f1f033a-397c-4a76-b07b-0687f72bbf44",
+    "photo":
+      "../../../public/imges/catalog/6f1f033a-397c-4a76-b07b-0687f72bbf44.jpg",
+    "name": "Кулон",
+    "price": 1100,
+    "tags": ["jfegx9574fdsdtag03", "jr735gdufirketag02"],
+    "colors": ["ffffff"],
+    "bookmark": false
+  }
+]

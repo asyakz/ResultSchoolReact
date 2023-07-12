@@ -1,0 +1,13 @@
+@import '../../../../colors';
+
+.banner {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 440px;
+  color: $turquoise-color;
+  background-color: $wrong-light-red-color;
+  background-image: url(../../../../../src/assets/banners/banner-catalog.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}

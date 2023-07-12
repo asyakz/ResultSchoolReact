@@ -1,0 +1,50 @@
+@import '../../../colors';
+
+.header-filter-nav {
+  &__btn {
+    cursor: pointer;
+    background-color: transparent;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 2px;
+    padding-bottom: 3px;
+    width: auto;
+    color: $black-color;
+    font-size: 18px;
+    border: 2px solid transparent;
+    transition: color 0.4s ease-in-out, border 0.4s ease-in-out;
+  }
+
+  &__btn:hover {
+    color: $violet-hover-color;
+  }
+
+  &__btn:active {
+    color: $violet-active-color;
+  }
+
+  &__item:not(:last-child) {
+    margin-right: 10px;
+  }
+
+  &__item:not(:first-child) {
+    margin-left: 10px;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    height: 80px;
+  }
+}
+
+.active-filter {
+  color: $violet-active-color;
+  font-size: 18px;
+  padding-top: 2px;
+  padding-bottom: 3px;
+  cursor: pointer;
+  border: 2px solid $violet-basic-color;
+  background-color: transparent;
+  transition: color 0.4s ease-in-out, border 0.4s ease-in-out;
+}

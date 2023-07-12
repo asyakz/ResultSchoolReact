@@ -1,0 +1,92 @@
+@import '../../../colors';
+
+.header-nav {
+  display: flex;
+  // justify-content: end;
+  width: 100%;
+
+  &__list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    max-width: 1000px;
+  }
+
+  &__item:not(:last-child) {
+    margin-right: 10px;
+  }
+  &__item:not(:first-child) {
+    margin-left: 10px;
+  }
+
+  &__link {
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 3px;
+    width: auto;
+    color: $white-color;
+    font-size: 18px;
+    border: 2px solid transparent;
+    transition: color 0.4s ease-in-out, border 0.4s ease-in-out;
+  }
+
+  &__link:hover {
+    color: $violet-hover-color;
+  }
+
+  &__link:active {
+    color: $violet-active-color;
+  }
+
+  &__about-me {
+    position: absolute;
+    display: flex;
+    top: 530px;
+    left: 170px;
+  }
+
+  &__login {
+    margin-left: 200px !important;
+    position: relative;
+  }
+
+  &__basket {
+    position: relative;
+  }
+}
+
+.link-basket {
+  padding-right: 35px;
+}
+
+.svg-basket {
+  position: absolute;
+  top: 3px;
+  right: 7px;
+}
+
+.svg-basket path {
+  transition: fill 0.4s ease-in-out;
+}
+
+.svg-basket rect {
+  transition: fill 0.4s ease-in-out;
+}
+
+.svg-basket:hover path {
+  fill: $violet-hover-color;
+}
+
+.svg-basket:hover rect {
+  fill: $violet-hover-color;
+}
+
+.active {
+  position: relative;
+  color: $violet-basic-color;
+  padding-bottom: 3px;
+  cursor: pointer;
+  border: 2px solid $violet-basic-color;
+  transition: color 0.4s ease-in-out, border 0.4s ease-in-out;
+}

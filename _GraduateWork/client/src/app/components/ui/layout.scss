@@ -1,0 +1,48 @@
+@import '../../../colors';
+
+.container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+  background-color: $white-color;
+}
+
+.container-dark {
+  background-color: $basic-gray-color;
+}
+
+.container-filter {
+  display: flex;
+  justify-content: start;
+}
+
+header,
+.header-filter,
+main,
+footer {
+  max-width: 1920px;
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+.container-footer,
+.container-header {
+  justify-content: end;
+}
+
+footer {
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+main {
+  width: 100%;
+  justify-content: start;
+}
+
+.header-filter {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}

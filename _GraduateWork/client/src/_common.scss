@@ -1,0 +1,74 @@
+@import './colors.scss';
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../src/fonts/opensans-regular-webfont.woff') format('woff2'),
+    url('../src/fonts/opensans-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../src/fonts/opensans-bold-webfont.woff2') format('woff2'),
+    url('../src/fonts/opensans-bold-webfont.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../src/fonts/opensans-semibold-webfont.woff2') format('woff2'),
+    url('../src/fonts/opensans-semibold-webfont.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../src/fonts/opensans-italic-webfont.woff2') format('woff2'),
+    url('../src/fonts/opensans-italic-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+html {
+  font-family: 'Open Sans', sans-serif, Inter, system-ui, Avenir, Helvetica,
+    Arial;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+.nav {
+  display: flex;
+  color: #ffffff;
+}
+
+.caption {
+  margin-top: 50px;
+  margin-bottom: 30px;
+  color: $white-color;
+}
+
+.text {
+  color: $white-color;
+}
