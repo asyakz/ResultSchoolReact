@@ -1,0 +1,15 @@
+@import '../../colors.scss';
+
+h2 {
+  margin-top: 50px;
+}
+
+p {
+  margin-top: 30px;
+}
+
+.recom-page-container {
+  max-width: 800px;
+  padding: 20px;
+  background-color: $gray-color-333;
+}

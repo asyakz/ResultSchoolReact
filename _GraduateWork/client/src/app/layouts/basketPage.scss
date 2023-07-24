@@ -1,0 +1,89 @@
+@import '../../colors.scss';
+
+.basket-page {
+  display: flex;
+
+  &__container-left,
+  &__container-right {
+    background-color: $gray-color-333;
+    padding: 20px;
+  }
+
+  &__container-left {
+    justify-content: center;
+    margin-right: 50px;
+    width: 50%;
+  }
+
+  &__container-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+  }
+
+  &__table-header {
+    background-color: $gray-color-999;
+  }
+
+  &__container-final-price {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid $gray-color-999;
+    border-radius: 10px;
+  }
+
+  &__final-price {
+    margin-top: 70px;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  &__btn {
+    margin-top: 50px;
+    height: 50px;
+    width: auto;
+    padding-top: 10px;
+    padding-bottom: 45px;
+    padding-left: 50px;
+    padding-right: 50px;
+    border-radius: 100px;
+    border: 2px solid $violet-basic-color;
+    background-color: transparent;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  &__img {
+    max-width: 100px;
+    max-height: auto;
+  }
+
+  &__btn-delete {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    width: 25px;
+    height: 25px;
+  }
+
+  &__btn-delete svg {
+    width: 25px;
+    height: 25px;
+  }
+
+  &__btn-delete svg ellipse {
+    transition: fill 0.4s ease-in-out;
+  }
+
+  &__btn-delete:hover svg ellipse {
+    fill: $wrong-light-red-color;
+  }
+}

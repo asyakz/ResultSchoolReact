@@ -1,18 +1,32 @@
-const TagsJewelry = require('../models/TagsJewelry');
-const ColorsJewelry = require('../models/ColorsJewelry');
+const Techniques = require('../models/Techniques');
+const Materials = require('../models/Materials');
+const Colors = require('../models/Colors');
+const JewelryType = require('../models/JewelryType');
 
-const tagsJewelryMock = require('../mock/tagsJewelry.json');
-const colorsJewelryMock = require('../mock/colorsJewelry.json');
+const techniquesMock = require('../mock/techniques.json')
+const materialsMock = require('../mock/materials.json');
+const jewelryTypeMock = require('../mock/jewelryType.json');
+const colorsMock = require('../mock/colors.json');
 
 module.exports = async () => {
-  const tags = await TagsJewelry.find()
-  if (tags.length !== tagsJewelryMock.length) {
-    await createInitialEntity(TagsJewelry, tagsJewelryMock)
+  const jewelryType = await JewelryType.find()
+  if (jewelryType.length !== jewelryTypeMock.length) {
+    await createInitialEntity(JewelryType, jewelryTypeMock)
   }
 
-  const colors = await ColorsJewelry.find()
-  if (colors.length !== colorsJewelryMock.length) {
-    await createInitialEntity(ColorsJewelry, colorsJewelryMock)
+  const techniques = await Techniques.find()
+  if (techniques.length !== techniquesMock.length) {
+    await createInitialEntity(Techniques, techniquesMock)
+  }
+
+  const colors = await Colors.find()
+  if (colors.length !== colorsMock.length) {
+    await createInitialEntity(Colors, colorsMock)
+  }
+
+  const materials = await Materials.find()
+  if (materials.length !== materialsMock.length) {
+    await createInitialEntity(Materials, materialsMock)
   }
 }
 

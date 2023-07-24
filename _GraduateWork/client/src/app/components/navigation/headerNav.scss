@@ -2,15 +2,16 @@
 
 .header-nav {
   display: flex;
-  // justify-content: end;
-  width: 100%;
+  width: auto;
+  justify-content: space-between;
 
   &__list {
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 80px;
-    max-width: 1000px;
+    min-width: 800px;
+    margin-right: 300px;
   }
 
   &__item:not(:last-child) {
@@ -35,6 +36,18 @@
     color: $violet-hover-color;
   }
 
+  &__link:hover svg path {
+    fill: $violet-hover-color;
+  }
+
+  &__link:active svg path {
+    fill: $violet-active-color;
+  }
+
+  &__link svg path {
+    transition: fill 0.4s ease-in-out;
+  }
+
   &__link:active {
     color: $violet-active-color;
   }
@@ -50,14 +63,17 @@
     margin-left: 200px !important;
     position: relative;
   }
+}
 
-  &__basket {
-    position: relative;
-  }
+.header-login {
+  display: flex;
+  align-items: center;
+  height: 80px;
 }
 
 .link-basket {
   padding-right: 35px;
+  position: relative;
 }
 
 .svg-basket {
@@ -66,20 +82,8 @@
   right: 7px;
 }
 
-.svg-basket path {
-  transition: fill 0.4s ease-in-out;
-}
-
-.svg-basket rect {
-  transition: fill 0.4s ease-in-out;
-}
-
-.svg-basket:hover path {
-  fill: $violet-hover-color;
-}
-
-.svg-basket:hover rect {
-  fill: $violet-hover-color;
+.svg-login {
+  margin-right: 5px;
 }
 
 .active {
@@ -89,4 +93,12 @@
   cursor: pointer;
   border: 2px solid $violet-basic-color;
   transition: color 0.4s ease-in-out, border 0.4s ease-in-out;
+}
+
+.active svg path {
+  fill: $violet-basic-color;
+}
+
+.link__redactor {
+  color: $turquoise-color;
 }

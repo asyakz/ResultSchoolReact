@@ -8,6 +8,7 @@ const schema = new Schema({
     unique: true
   },
   password: String,
+  image: String,
   sex: {
     type: String,
     enum: ['male', 'female']

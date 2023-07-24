@@ -20,9 +20,6 @@ const FilterNav = () => {
         <button className='header-filter-nav__btn'>Кольца</button>
       </li>
       <li className='header-filter-nav__item'>
-        <button className='header-filter-nav__btn'>Комплекты</button>
-      </li>
-      <li className='header-filter-nav__item'>
         <button className='header-filter-nav__btn'>Техники</button>
       </li>
       <li className='header-filter-nav__item'>

@@ -1,10 +1,10 @@
 const express = require('express')
-const TagsJewelry = require('../models/TagsJewelry')
+const Colors = require('../models/Colors')
 const router = express.Router({ mergeParams: true })
 
 router.get('/', async (req, res) => {
   try {
-    const list = await TagsJewelry.find()
+    const list = await Colors.findOne({'name': 'bronze'})
     res.status(200).send(list)
   } catch (e) {
     res.status(500).json({

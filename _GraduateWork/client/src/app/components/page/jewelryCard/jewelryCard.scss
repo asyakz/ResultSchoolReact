@@ -1,0 +1,96 @@
+@import '../../../../colors.scss';
+
+.jewelry-card {
+  position: relative;
+
+  &__img {
+    width: 407px;
+    height: 407px;
+    object-fit: contain;
+  }
+
+  &__btn {
+    background-color: transparent;
+    border: none;
+  }
+
+  &__title {
+    font-size: 24px;
+  }
+}
+
+.jewelry-card___open-card {
+  border: solid 2px $white-color;
+}
+
+.jewelry-card__top-container {
+  content: '';
+  display: flex;
+  position: absolute;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 3;
+  height: 60px;
+  width: 100%;
+  background-color: $black-color-60;
+  top: 0px;
+  left: 0px;
+}
+
+.jewelry-card__bottom-container {
+  content: '';
+  display: flex;
+  position: absolute;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 3;
+  height: 60px;
+  width: 100%;
+  background-color: $black-color-60;
+  bottom: 5px;
+  left: 0px;
+}
+
+.jewelry-card__title {
+  margin: 0;
+  margin-left: 15px;
+}
+
+.jewelry-card__price {
+  margin-right: 15px;
+}
+
+.jewelry-card__btn {
+  cursor: pointer;
+  margin-left: 15px;
+  transition: color 0.4s ease-in-out, border 0.4s ease-in-out;
+}
+
+.jewelry-card__btn:hover {
+  color: $violet-hover-color;
+}
+
+.jewelry-card__btn:hover svg path {
+  fill: $violet-hover-color;
+}
+
+.jewelry-card__btn:active svg path {
+  fill: $violet-active-color;
+}
+
+.jewelry-card__btn svg path {
+  transition: fill 0.4s ease-in-out;
+}
+
+.jewelry-card__btn:active {
+  color: $violet-active-color;
+}
+
+.jewelry-card___open-card {
+  cursor: pointer;
+  margin-right: 15px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 10px;
+  padding-right: 10px;
+}

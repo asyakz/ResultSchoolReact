@@ -1,10 +1,10 @@
 const express = require('express')
-const ColorsJewelry = require('../models/ColorsJewelry')
+const JewelryType = require('../models/JewelryType')
 const router = express.Router({ mergeParams: true })
 
 router.get('/', async (req, res) => {
   try {
-    const list = await ColorsJewelry.find()
+    const list = await JewelryType.find()
     res.status(200).send(list)
   } catch (e) {
     res.status(500).json({

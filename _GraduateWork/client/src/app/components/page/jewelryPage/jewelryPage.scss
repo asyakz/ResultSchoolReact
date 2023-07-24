@@ -1,0 +1,43 @@
+@import '../../../../colors.scss';
+
+.jewelry-page {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+
+  &__img-container {
+    margin-right: 50px;
+  }
+
+  &__img {
+    object-fit: cover;
+    width: 500px;
+    height: 500px;
+  }
+}
+
+.jewelry-page__container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+
+.jewelry-page__btn {
+  cursor: pointer;
+  background-color: transparent;
+  border-radius: 100px;
+  border: 2px solid $violet-basic-color;
+  width: 343px;
+  height: 79px;
+  text-align: center;
+  font-family: Open Sans;
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.jewelry-page__price {
+  font-size: 26px;
+  margin-top: 20px;
+}

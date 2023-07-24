@@ -1,0 +1,39 @@
+@import '../../colors.scss';
+
+.login-page {
+  background-color: $gray-color-333;
+
+  &__container {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__caption {
+    padding-top: 30px;
+    text-align: center;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    color: $violet-basic-color;
+  }
+
+  &__btn {
+    cursor: pointer;
+    transition: color 0.4s ease-in-out;
+  }
+
+  &__btn:hover {
+    cursor: pointer;
+    color: $violet-hover-color;
+  }
+
+  &__btn:active {
+    cursor: pointer;
+    color: $violet-active-color;
+  }
+}
+
+.login-page__container p {
+  color: $turquoise-color;
+}

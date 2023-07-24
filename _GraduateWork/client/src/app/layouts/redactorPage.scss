@@ -1,0 +1,17 @@
+@import '../../colors.scss';
+
+.redactor-page__btn {
+  cursor: pointer;
+  background-color: transparent;
+  border-radius: 100px;
+  margin-bottom: 50px;
+  border: 2px solid $turquoise-color;
+  width: 554px;
+  height: 77px;
+  text-align: center;
+  font-family: Open Sans;
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}

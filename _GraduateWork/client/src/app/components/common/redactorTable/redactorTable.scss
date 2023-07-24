@@ -1,0 +1,27 @@
+@import '../../../../colors.scss';
+
+.redactor-table {
+  &__header {
+    background-color: $gray-color-333;
+    height: 70px;
+    text-align: center;
+  }
+
+  &__row {
+    background-color: 1px solid $gray-color-999;
+  }
+
+  &__btn-delete {
+    cursor: pointer;
+    background-color: transparent;
+  }
+
+  &__btn-change {
+    cursor: pointer;
+    background-color: transparent;
+  }
+}
+
+.redactor-table__row {
+  border-bottom: 2px solid red;
+}

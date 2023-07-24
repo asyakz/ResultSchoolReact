@@ -1,0 +1,41 @@
+@import '../../../../colors.scss';
+
+.login-form-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__btn-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__btn {
+    cursor: pointer;
+    margin-top: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
+    width: auto;
+    height: 40px;
+    color: $violet-basic-color;
+    background-color: transparent;
+    border: 2px solid $violet-basic-color;
+    border-radius: 100px;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    transition: color 0.4s ease-in-out, background-color 0.4s ease-in-out;
+  }
+
+  &__btn:hover {
+    background-color: $violet-hover-color;
+    color: $white-color;
+  }
+}
+
+.login-form-page input {
+  color: $black-color;
+  font-size: 20px;
+  margin-bottom: 10px;
+}

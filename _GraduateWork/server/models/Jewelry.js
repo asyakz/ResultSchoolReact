@@ -8,18 +8,29 @@ const schema = new Schema({
     type: String,
     required: true
   },
+  jewelryType: {
+    type: Schema.Types.ObjectId,
+    ref: 'jewelryType'
+  },
   price: {
     type: Number,
     required: true
   },
-  tags: [{
+  techniques: [{
     type: Schema.Types.ObjectId,
-    ref: 'TagsJewelry'
+    ref: 'Techniques'
+  }],
+  materials: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Materials'
   }],
   colors: [{
     type: Schema.Types.ObjectId,
-    ref: 'ColorsJewelry'
+    ref: 'Colors'
   }],
+  description: {
+    type: String,
+  },
   bookmark: {
     type: String,
     enum: [false, true]}

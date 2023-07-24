@@ -1,4 +1,6 @@
 {
   "port": 8080,
-  "mongoUri": "mongodb+srv://asya:lginE4N4aJUkIrKg@cluster0.w5tljrn.mongodb.net/app?retryWrites=true&w=majority"
-}
+  "mongoUri": "mongodb+srv://asya:lginE4N4aJUkIrKg@cluster0.w5tljrn.mongodb.net/app?retryWrites=true&w=majority",
+  "accessSecret": "access secret key asyakz",
+  "refreshSecret": "refresh secret key asyakz"
+} 
