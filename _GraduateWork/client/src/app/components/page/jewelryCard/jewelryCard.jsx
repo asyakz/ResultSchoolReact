@@ -2,17 +2,26 @@ import React, { useState, useEffect } from 'react';
 import './jewelryCard.scss';
 import { Link } from 'react-router-dom';
 import api from '../../../api/index';
+import jewelryService from '../../../services/jewelry.service';
+import jewerlyTypeService from '../../../services/jewelryType.service';
+import { use } from '../../../../../../server/routes';
 
 // let count = 0;
 
 const JewelryCard = (item) => {
-  const [jewelryType, setJewelryType] = useState();
+  const [jewelryTypes, setJewelryTypes] = useState();
+  const [currentJewelry, setJewelry] = useState();
+  
   useEffect(() => {
-    api.jewelryType.fetchAll().then((data) => setJewelryType(data));
+    setJewelry(jewelryService.getById(item._id));
   }, []);
-  let currentJewelryType = null;
-  if (jewelryType) {
-    for (let i of jewelryType) {
+
+  useEffect(() => {
+    setJewelryTypes(jewerlyTypeService.get())
+  })
+
+  if (jewelryTypes) {
+    for (let i of jewelryTypes) {
       if (item.item.jewelryType === i._id) {
         currentJewelryType = i.name;
       }

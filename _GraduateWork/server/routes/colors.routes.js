@@ -4,7 +4,7 @@ const router = express.Router({ mergeParams: true })
 
 router.get('/', async (req, res) => {
   try {
-    const list = await Colors.findOne({'name': 'bronze'})
+    const list = await Colors.find()
     res.status(200).send(list)
   } catch (e) {
     res.status(500).json({

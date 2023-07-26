@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react';
 import './jewelryList.scss';
 import api from '../../../api/index';
 import JewelryCard from '../jewelryCard/jewelryCard';
+import jewelryService from '../../../services/jewelry.service';
 
 const JewelryList = () => {
   let id = self.crypto.randomUUID();
   const [jewelry, setJewelry] = useState();
   useEffect(() => {
-    api.jewelry.fetchAll().then((data) => setJewelry(data));
+    setJewelry(jewelryService.get());
   }, []);
   return (
     <>

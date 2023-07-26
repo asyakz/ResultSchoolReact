@@ -4,7 +4,7 @@
     "photo":
       "../../../public/imges/catalog/b0be7a31-6de5-4a0b-aa79-8989e0c394b8.jpg",
     "name": "Бирюзовые серьги с гортензией и озатамнусом",
-    "jewelryType": "type01",
+    "jewelryType": "64be42b44c4db6c76909a635",
     "materials": ["materia01", "materia07"],
     "price": 1500,
     "techniques": [],
