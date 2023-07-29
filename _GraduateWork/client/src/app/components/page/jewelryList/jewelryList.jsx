@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './jewelryList.scss';
-import api from '../../../api/index';
+import { getJewelriesList } from '../../../store/jewelries';
+import { useSelector } from 'react-redux';
 import JewelryCard from '../jewelryCard/jewelryCard';
-import jewelryService from '../../../services/jewelry.service';
 
 const JewelryList = () => {
-  let id = self.crypto.randomUUID();
-  const [jewelry, setJewelry] = useState();
-  useEffect(() => {
-    setJewelry(jewelryService.get());
-  }, []);
+  const jewelries = useSelector(getJewelriesList());
+
   return (
     <>
-      {jewelry && (
+      {jewelries && (
         <>
           <ul className='jewelry-list'>
-            {jewelry.map((item) => (
-              <JewelryCard key={id} item={item} />
+            {jewelries.map((item) => (
+              <JewelryCard
+                key={self.crypto.randomUUID()}
+                jewerelyId={item._id}
+              />
             ))}
           </ul>
         </>

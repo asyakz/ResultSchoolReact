@@ -1,51 +1,34 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './jewelryCard.scss';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import api from '../../../api/index';
-import jewelryService from '../../../services/jewelry.service';
-import jewerlyTypeService from '../../../services/jewelryType.service';
-import { use } from '../../../../../../server/routes';
+import { getJewelryById } from '../../../store/jewelries';
+import { useSelector } from 'react-redux';
+import { getJewelryTypeById } from '../../../store/jewelryTypes';
 
-// let count = 0;
-
-const JewelryCard = (item) => {
-  const [jewelryTypes, setJewelryTypes] = useState();
-  const [currentJewelry, setJewelry] = useState();
-  
-  useEffect(() => {
-    setJewelry(jewelryService.getById(item._id));
-  }, []);
-
-  useEffect(() => {
-    setJewelryTypes(jewerlyTypeService.get())
-  })
-
-  if (jewelryTypes) {
-    for (let i of jewelryTypes) {
-      if (item.item.jewelryType === i._id) {
-        currentJewelryType = i.name;
-      }
-    }
-  }
+const JewelryCard = ({ jewerelyId }) => {
+  const jewelry = useSelector(getJewelryById(jewerelyId));
+  const jewelryType = useSelector(getJewelryTypeById(jewelry.jewelryType));
+  console.log('jewelryType', jewelryType);
 
   const addToLocalStorage = () => {
     if (!localStorage.getItem('cart')) {
       localStorage.setItem('cart', JSON.stringify([]));
     }
     const newArr = JSON.parse(localStorage.getItem('cart'));
-    newArr.push(item.item._id);
+    newArr.push(jewelry._id);
     localStorage.setItem('cart', JSON.stringify(newArr));
   };
   return (
     <li className='jewelry-card'>
       <div className='jewelry-card__container'>
         <div className='jewelry-card__top-container'>
-          <h2 className='jewelry-card__title'>{currentJewelryType}</h2>
-          <span className='jewelry-card__price'>{`Стоимость: ${item.item.price} рублей`}</span>
+          <h2 className='jewelry-card__title'>{jewelryType.name}</h2>
+          <span className='jewelry-card__price'>{`Стоимость: ${jewelry.price} рублей`}</span>
         </div>
         <img
           className='jewelry-card__img'
-          src={item.item.photo}
+          src={jewelry.photo}
           alt='Карточка товара'
         />
         <div className='jewelry-card__bottom-container'>
@@ -73,7 +56,7 @@ const JewelryCard = (item) => {
             </svg>
           </button>
           <div className='jewelry-card___open-card'>
-            <Link key={item.item._id} to={`/catalog/${item.item._id}`}>
+            <Link key={jewelry._id} to={`/catalog/${jewelry._id}`}>
               Открыть карточку
             </Link>
           </div>
@@ -81,6 +64,10 @@ const JewelryCard = (item) => {
       </div>
     </li>
   );
+};
+
+JewelryCard.propTypes = {
+  jewerelyId: PropTypes.string.isRequired
 };
 
 export default JewelryCard;

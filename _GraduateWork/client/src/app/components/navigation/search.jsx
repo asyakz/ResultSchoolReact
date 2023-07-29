@@ -1,8 +1,14 @@
 import React from 'react';
 import './search.scss';
+import TextField from '../common/form/textField';
 
 const Search = () => {
-  return <h3 className='search__caption'>Search</h3>;
+  return (
+    <div className='search'>
+      <p className='search__text'>Поиск:</p>;
+      <TextField />;
+    </div>
+  );
 };
 
 export default Search;

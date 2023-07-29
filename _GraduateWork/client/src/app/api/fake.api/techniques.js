@@ -5,7 +5,8 @@ const techniques = [
   { _id: '77931gfte5658tech04', name: 'Макраме' },
   { _id: '77931gfte5658tech05', name: 'Вязаный жгут' },
   { _id: '77931gfte5658tech06', name: 'Оплетение кабошона' },
-  { _id: '77931gfte5658tech07', name: 'Вышивка по коже' }
+  { _id: '77931gfte5658tech07', name: 'Вышивка по коже' },
+  { _id: '77931gfte5658tech07', name: 'Ндебеле' }
 ];
 
 if (!localStorage.getItem('techniques')) {

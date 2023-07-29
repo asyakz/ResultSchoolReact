@@ -1,0 +1,38 @@
+@import '../../../colors';
+
+.sort {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+
+  &__text {
+    display: block;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+  }
+
+  &__btn-container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__btn-high,
+  &__btn-low {
+    cursor: pointer;
+    width: auto;
+    height: 30px;
+    background-color: transparent;
+    font-size: 18px;
+    transition: background-color 0.4s ease-in-out;
+  }
+
+  &__btn-low:hover {
+    background-color: $turquoise-color;
+  }
+
+  &__btn-high:hover {
+    background-color: $turquoise-color;
+  }
+}

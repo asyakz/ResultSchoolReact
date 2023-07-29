@@ -1,33 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './redactorTable.scss';
-import api from '../../../api/index';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { getJewelryTypes } from '../../../store/jewelryTypes';
+import { getMaterials } from '../../../store/materials';
+import { getTechniques } from '../../../store/techniques';
+import { getColors } from '../../../store/colors';
+import { getJewelriesList } from '../../../store/jewelries';
 
 const RedactorTable = () => {
   let id = self.crypto.randomUUID();
-  const [jewelry, setJewelry] = useState();
-  const [jewelryType, setJewelryType] = useState();
-  const [colors, setColors] = useState();
-  const [techniques, setTechniques] = useState();
-  const [materials, setMaterials] = useState();
-  useEffect(() => {
-    api.jewelry.fetchAll().then((data) => setJewelry(data));
-  }, []);
-  useEffect(() => {
-    api.jewelryType.fetchAll().then((data) => {
-      console.log(data);
-      setJewelryType(data);
-    });
-  }, []);
-  useEffect(() => {
-    api.colors.fetchAll().then((data) => setColors(data));
-  }, []);
-  useEffect(() => {
-    api.techniques.fetchAll().then((data) => setTechniques(data));
-  }, []);
-  useEffect(() => {
-    api.materials.fetchAll().then((data) => setMaterials(data));
-  }, []);
+  console.log(id);
+  const jewelries = useSelector(getJewelriesList());
+  const jewelryTypes = useSelector(getJewelryTypes());
+  const materials = useSelector(getMaterials());
+  const techniques = useSelector(getTechniques());
+  const colors = useSelector(getColors());
 
   return (
     <table className='redactor-table'>
@@ -45,14 +33,14 @@ const RedactorTable = () => {
           <td>{'Действия'}</td>
         </tr>
       </thead>
-      {jewelry && jewelryType && colors && techniques && materials && (
+      {jewelries && jewelryTypes && materials && techniques && colors && (
         <tbody key={id}>
-          {jewelry.map((item) => (
+          {jewelries.map((item) => (
             <tr key={id} className='redactor-table__row'>
               <td key={id}>{item._id}</td>
               <td key={id}>{item.name}</td>
               <td key={id}>
-                {jewelryType.map((type) => {
+                {jewelryTypes.map((type) => {
                   if (item.jewelryType === type._id) return type.name;
                 })}
               </td>

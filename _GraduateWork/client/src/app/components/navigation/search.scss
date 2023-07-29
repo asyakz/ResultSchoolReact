@@ -1,3 +1,25 @@
-.search__caption {
-  color: red;
+@import '../../../colors';
+
+.search {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  &__text {
+    color: $black-color;
+  }
+}
+
+.search input {
+  padding: 1px;
+  color: $gray-color-999;
+  font-size: 20px;
+  border-top: transparent;
+  border-right: transparent;
+  border-left: transparent;
+  border-bottom: 1ps solid $gray-color-999;
+}
+
+.search input:focus-visible {
+  outline: none;
 }

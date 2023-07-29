@@ -13,12 +13,24 @@
 
   &__btn-delete {
     cursor: pointer;
+    font-size: 18px;
     background-color: transparent;
+    transition: background-color 0.4s ease-in-out;
+  }
+
+  &__btn-delete:hover {
+    background-color: $wrong-red-color;
   }
 
   &__btn-change {
     cursor: pointer;
+    font-size: 18px;
     background-color: transparent;
+    transition: background-color 0.4s ease-in-out;
+  }
+
+  &__btn-change:hover {
+    background-color: $turquoise-color;
   }
 }
 

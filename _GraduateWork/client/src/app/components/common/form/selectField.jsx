@@ -23,7 +23,7 @@ const SelectField = ({
       : options;
 
   return (
-    <div className='mb-4'>
+    <div className='select-field'>
       <label htmlFor={name} className='form-label'>
         {label}
       </label>

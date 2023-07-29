@@ -59,11 +59,18 @@
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    transition: background-color 0.4s ease-in-out;
+  }
+
+  &__btn:hover {
+    cursor: pointer;
+    background-color: $violet-basic-color;
   }
 
   &__img {
-    max-width: 100px;
-    max-height: auto;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
   }
 
   &__btn-delete {

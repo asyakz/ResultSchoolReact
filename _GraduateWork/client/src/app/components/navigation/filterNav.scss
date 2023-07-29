@@ -48,3 +48,40 @@
   background-color: transparent;
   transition: color 0.4s ease-in-out, border 0.4s ease-in-out;
 }
+
+.header-filter-nav__item select {
+  cursor: pointer;
+  background-color: transparent;
+  width: auto;
+  color: $gray-color-999;
+  font-size: 18px;
+  border: 2px solid transparent;
+  transition: color 0.4s ease-in-out, border 0.4s ease-in-out;
+}
+
+.header-filter-nav__item option {
+  color: $black-color;
+}
+
+.header-filter-nav__item label {
+  cursor: pointer;
+  padding-left: 5px;
+  background-color: transparent;
+  width: auto;
+  color: $black-color;
+  font-size: 18px;
+  border: 2px solid transparent;
+  transition: color 0.4s ease-in-out, border 0.4s ease-in-out;
+}
+
+.header-filter-nav__item label:hover {
+  color: $violet-hover-color;
+}
+
+// .form-select {
+//   max-width: 100px;
+// }
+
+.header-filter-nav__item option:disabled {
+  color: $turquoise-color;
+}

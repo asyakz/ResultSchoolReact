@@ -2,11 +2,12 @@
 
 .jewelry-card {
   position: relative;
+  margin-bottom: 30px;
 
   &__img {
     width: 407px;
     height: 407px;
-    object-fit: contain;
+    object-fit: cover;
   }
 
   &__btn {

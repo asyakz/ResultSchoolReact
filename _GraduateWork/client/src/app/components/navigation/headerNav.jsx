@@ -13,11 +13,6 @@ const HeaderNav = () => {
             </NavLink>
           </li>
           <li className='header-nav__item'>
-            <NavLink className='header-nav__link' to='/archive'>
-              Архив
-            </NavLink>
-          </li>
-          <li className='header-nav__item'>
             <NavLink className='header-nav__link' to='/recommend'>
               Рекомендации
             </NavLink>

@@ -1,0 +1,37 @@
+@import '../../colors.scss';
+
+.contacts-page {
+  &__text {
+    position: relative;
+  }
+
+  &__btn-telegram svg {
+    position: absolute;
+    cursor: pointer;
+    top: -22px;
+    left: 180px;
+  }
+
+  &__btn-telegram:hover svg {
+    position: absolute;
+    cursor: pointer;
+    top: -22px;
+    left: 180px;
+  }
+
+  &__btn-telegram:hover svg path {
+    transition: fill 0.4s ease-in-out;
+  }
+
+  &__btn-telegram:hover svg path {
+    fill: $violet-basic-color;
+  }
+}
+
+#map {
+  width: 600px;
+  height: 400px;
+  background-image: url(../../../public/imges/map.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}

@@ -1,16 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import './basketPage.scss';
-import api from '../api/index';
-
-const cart = JSON.parse(localStorage.getItem('cart'));
-console.log('корзина', cart);
+import { useSelector } from 'react-redux';
+import { getJewelriesList } from '../store/jewelries';
 
 const BasketPage = () => {
-  let id = self.crypto.randomUUID();
-  const [jewelry, setJewelry] = useState();
-  useEffect(() => {
-    api.jewelry.fetchAll().then((data) => setJewelry(data));
-  }, []);
+  const jewelries = useSelector(getJewelriesList());
+  const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')));
+  const getSum = () => {
+    if (cart)
+      return cart
+        .map((cartItem) => jewelries.find((j) => j._id === cartItem))
+        .reduce((prev, curr) => prev + curr.price, 0);
+  };
+  console.log('cart', cart);
+  const handleDelete = (id) => {
+    setCart(cart.filter((cartItem) => cartItem !== id));
+    localStorage.setItem(
+      'cart',
+      JSON.stringify(cart.filter((cartItem) => cartItem !== id))
+    );
+  };
+
+  useEffect(() => {}, [cart]);
+
   return (
     <>
       <h1 className='caption'>Корзина</h1>
@@ -27,25 +39,35 @@ const BasketPage = () => {
                 <td></td>
               </tr>
             </thead>
-            {jewelry && (
-              <tbody key={id}>
-                {jewelry.map((item) =>
+            {jewelries && cart && (
+              <tbody key={self.crypto.randomUUID()}>
+                {jewelries.map((item) =>
                   cart.map((idCart) =>
                     item._id === idCart ? (
-                      <tr key={id} className='redactor-table__row'>
-                        <td key={id}>{item._id}</td>
-                        <td key={id}>
+                      <tr
+                        key={self.crypto.randomUUID()}
+                        className='redactor-table__row'
+                      >
+                        <td key={self.crypto.randomUUID()}>{item._id}</td>
+                        <td key={self.crypto.randomUUID()}>
                           <img
                             className='basket-page__img'
                             src={item.photo}
                             alt='Карточка товара'
                           />
                         </td>
-                        <td key={id}>{item.name}</td>
-                        <td key={id}>{`${item.price} рублей`}</td>
-                        <td key={id}>{`Количество: ${1}`}</td>
+                        <td key={self.crypto.randomUUID()}>{item.name}</td>
+                        <td
+                          key={self.crypto.randomUUID()}
+                        >{`${item.price} рублей`}</td>
+                        <td
+                          key={self.crypto.randomUUID()}
+                        >{`Количество: ${1}`}</td>
                         <td>
-                          <button className='basket-page__btn-delete'>
+                          <button
+                            className='basket-page__btn-delete'
+                            onClick={() => handleDelete(idCart)}
+                          >
                             <svg
                               width='43'
                               height='43'
@@ -116,7 +138,7 @@ const BasketPage = () => {
                 fill='white'
               />
             </svg>
-            <span className='basket-page__final-price'>{`Итого: ${3000} рублей`}</span>
+            <span className='basket-page__final-price'>{`Итого: ${getSum()} рублей`}</span>
           </div>
           <button className='basket-page__btn'>Оформить заказ</button>
         </div>
