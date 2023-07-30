@@ -37,6 +37,7 @@ export const loadMaterialsList = () => async (dispatch, getState) => {
     try {
       const { content } = await materialsService.get();
       dispatch(materialsReceived(content));
+      console.log('loadMaterialsList finish');
     } catch (error) {
       dispatch(materialsRequestFailed(error.message));
     }

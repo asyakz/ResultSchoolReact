@@ -17,7 +17,7 @@ const AboutMePage = () => {
         </p>
         <img
           className='about-me__img'
-          src='../../../public/imges/me.jpg'
+          src='../../../imges/me.jpg'
           alt='It is me'
         />
       </div>

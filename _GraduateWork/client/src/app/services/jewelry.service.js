@@ -21,6 +21,11 @@ const jewelryService = {
       payload
     );
     return data;
+  },
+
+  delete: async (jewelryId) => {
+    const { data } = await httpService.delete(jewelryEndpoint + jewelryId);
+    return data;
   }
 };
 export default jewelryService;

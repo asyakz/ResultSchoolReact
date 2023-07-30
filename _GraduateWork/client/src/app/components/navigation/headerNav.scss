@@ -55,7 +55,7 @@
   &__about-me {
     position: absolute;
     display: flex;
-    top: 530px;
+    top: 450px;
     left: 170px;
   }
 
@@ -101,4 +101,37 @@
 
 .link__redactor {
   color: $turquoise-color;
+}
+
+.login-name-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.login-name {
+  margin-right: 20px;
+}
+
+.exit-btn {
+  cursor: pointer;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: auto;
+  height: 30px;
+  color: $violet-basic-color;
+  background-color: transparent;
+  border: 2px solid $violet-basic-color;
+  border-radius: 100px;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  transition: color 0.4s ease-in-out, background-color 0.4s ease-in-out;
+}
+
+.exit-btn:hover {
+  background-color: $wrong-light-red-color;
+  color: $white-color;
 }

@@ -8,7 +8,6 @@ import { getJewelryById } from '../../../store/jewelries';
 const JewelryPage = () => {
   const { id } = useParams();
   const jewelry = useSelector(getJewelryById(id));
-  // const jewelryType = useSelector(getJewelryTypeById(jewelry.jewelryType));
 
   return (
     <>

@@ -16,6 +16,7 @@ router.post('/signUp', [
   try {
     const errors = validationResult(req)
     if(!errors.isEmpty()) {
+      console.log(errors);
       return res.status(400).json({
         error: {
           message: 'INVALID_DATA',
@@ -36,9 +37,8 @@ router.post('/signUp', [
     }
 
     const hashedPassword = await bcrypt.hash(password, 12)
-
+    console.log('res.body', res.body);
     const newUser = await User.create({
-      ...generateUserData(),
       ...req.body,
       password: hashedPassword
     })
@@ -46,7 +46,7 @@ router.post('/signUp', [
     const tokens = tokenService.generate({ _id: newUser._id})
     await tokenService.save(newUser._id, tokens.refreshToken)
 
-    res.status(201).send({...tokens, userId: newUser._id})
+    res.status(201).send({...tokens, user: newUser})
 
   } catch (e) {
     console.log(chalk.red('Ошибка:', e.stack))
@@ -84,6 +84,7 @@ router.post('/signInWithPassword', [
       }
       const isPasswordEqual = await bcrypt.compare(password, existingUser.password)
       if (!isPasswordEqual) {
+        console.log(password);
         return res.status(400).send({
           error: {
             message: 'INVALID_PASSWORD',
@@ -91,11 +92,12 @@ router.post('/signInWithPassword', [
           }
         })
       }
-
+      console.log('existingUser', existingUser);
       const tokens = tokenService.generate({ _id: existingUser._id})
+      console.log('token', tokens);
       await tokenService.save(existingUser._id, tokens.refreshToken)
 
-      res.status(200).json({ ...tokens, userId: existingUser._id })
+      res.status(200).json({ ...tokens, user: existingUser })
 
     } catch (e) {
       console.log(chalk.red('Ошибка:', e.stack))

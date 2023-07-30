@@ -2,9 +2,9 @@ import React from 'react';
 import './layout.scss';
 import HeaderNav from './headerNav';
 import FooterNav from './footerNav';
-import FilterNav from './filterNav';
+// import FilterNav from './filterNav';
 import Banner from '../common/banner/banner';
-import Search from './search';
+// import Search from '../common/search/search';
 import { Outlet } from 'react-router-dom';
 
 const Layout = () => {
@@ -16,10 +16,7 @@ const Layout = () => {
         </header>
       </div>
       <div className='container container-filter'>
-        <div className='header-filter'>
-          <FilterNav />
-          <Search />
-        </div>
+        <div className='header-filter'></div>
       </div>
       <div>
         <Banner />

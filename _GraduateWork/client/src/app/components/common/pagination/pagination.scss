@@ -1,0 +1,19 @@
+@import '../../../../colors.scss';
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+}
+
+.page-item {
+  cursor: pointer;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 3px;
+  padding-bottom: 2px;
+}

@@ -1,57 +1,41 @@
 import React from 'react';
 import './filterNav.scss';
 import SelectField from '../common/form/selectField';
+import { useSelector } from 'react-redux';
+import { getMaterials } from '../../store/materials';
+import { getColors } from '../../store/colors';
+import { getTechniques } from '../../store/techniques';
+import { getJewelryTypes } from '../../store/jewelryTypes';
+import PropTypes from 'prop-types';
 
-const FilterNav = () => {
-  const materialsList = [
-    { value: 'materia01', label: 'Эпоксидная смола' },
-    { value: 'materia02', label: 'Бисер' },
-    { value: 'materia03', label: 'Полимерная глина' },
-    { value: 'materia04', label: 'Натуральный камень' },
-    { value: 'materia05', label: 'Медная проволока' },
-    { value: 'materia06', label: 'Хлопковая нить/шнур' },
-    { value: 'materia07', label: 'Сухоцвет' }
-  ];
+const FilterNav = ({
+  onChangeType,
+  onChangeMaterial,
+  onChangeColor,
+  onChangeTechnique,
+  clearFilters
+}) => {
+  const materials = useSelector(getMaterials());
+  const materialsList = materials.map((q) => ({
+    label: q.name,
+    value: q._id
+  }));
+  const colors = useSelector(getColors());
+  const colorsList = colors.map((q) => ({
+    label: q.name,
+    value: q._id
+  }));
+  const techniques = useSelector(getTechniques());
+  const techniquesList = techniques.map((q) => ({
+    label: q.name,
+    value: q._id
+  }));
+  const jewelryTypes = useSelector(getJewelryTypes());
+  const jewelryTypeList = jewelryTypes.map((p) => ({
+    label: p.name,
+    value: p._id
+  }));
 
-  const colorsList = [
-    { value: 'FFFFFF', label: 'Белый' },
-    { value: '000000', label: 'Черный' },
-    { value: '808080', label: 'Серый' },
-    { value: 'C0C0C0', label: 'Серебряный' },
-    { value: 'DAA520', label: 'Золотой' },
-    { value: '6C4807', label: 'Бронзовый' },
-    { value: 'AC4D25', label: 'Медный' },
-    { value: 'FF00FF', label: 'Розовый' },
-    { value: '582E7E', label: 'Аметистовый' },
-    { value: '40E0D0', label: 'Бирюзовый' },
-    { value: 'FFFF00', label: 'Желтый' },
-    { value: '00FF00', label: 'Зеленый' },
-    { value: '00008B', label: 'Синий' },
-    { value: '0000FF', label: 'Голубой' },
-    { value: 'FF0000', label: 'Красный' },
-    { value: 'FF4500', label: 'Оранжевый' },
-    { value: 'A52A2A', label: 'Коричневый' },
-    { value: 'E3D9C2', label: 'Жемчужный/бежевый' }
-  ];
-  const techniquesList = [
-    { value: 'dhe63r3fdfjg4tech01', label: 'Ловец снов' },
-    { value: '8575323fdddsotech02', label: 'WireWrap' },
-    { value: '77931gfte5658tech03', label: 'Кольчужное плетение' },
-    { value: '77931gfte5658tech04', label: 'Макраме' },
-    { value: '77931gfte5658tech05', label: 'Вязаный жгут' },
-    { value: '77931gfte5658tech06', label: 'Оплетение кабошона' },
-    { value: '77931gfte5658tech07', label: 'Вышивка по коже' },
-    { value: '77931gfte5658tech07', label: 'Ндебеле' }
-  ];
-  const jewelryTypeList = [
-    { value: 'type01', label: 'Серьги' },
-    { value: 'type02', label: 'Колье' },
-    { value: 'type03', label: 'Кольцо' },
-    { value: 'type04', label: 'Кулон' },
-    { value: 'type05', label: 'Панно' },
-    { value: 'type06', label: 'Браслет' },
-    { value: 'type07', label: 'Бусы' }
-  ];
   return (
     <ul className='header-filter-nav__list nav'>
       <li className='header-filter-nav__item'>
@@ -61,7 +45,7 @@ const FilterNav = () => {
           defaultOption={'Выерите тип...'}
           options={jewelryTypeList}
           name='jewelryTypes'
-          onChange=''
+          onChange={onChangeType}
         />
       </li>
       <li className='header-filter-nav__item'>
@@ -71,7 +55,7 @@ const FilterNav = () => {
           defaultOption={'Выберите технику...'}
           options={techniquesList}
           name='techniques'
-          onChange=''
+          onChange={onChangeTechnique}
         />
       </li>
       <li className='header-filter-nav__item'>
@@ -81,7 +65,7 @@ const FilterNav = () => {
           defaultOption={'Выберите материал...'}
           options={materialsList}
           name='materials'
-          onChange=''
+          onChange={onChangeMaterial}
         />
       </li>
       <li className='header-filter-nav__item'>
@@ -91,17 +75,24 @@ const FilterNav = () => {
           defaultOption={'Выберите цвет...'}
           options={colorsList}
           name='colors'
-          onChange=''
+          onChange={onChangeColor}
         />
       </li>
       <li className='header-filter-nav__item'>
-        <button className='header-filter-nav__btn'>Избранное</button>
-      </li>
-      <li className='header-filter-nav__item'>
-        <button className='header-filter-nav__btn'>Сбросить фильтры</button>
+        <button className='header-filter-nav__btn' onClick={clearFilters}>
+          Сбросить фильтры
+        </button>
       </li>
     </ul>
   );
+};
+
+FilterNav.propTypes = {
+  onChangeType: PropTypes.func.isRequired,
+  onChangeMaterial: PropTypes.func.isRequired,
+  onChangeColor: PropTypes.func.isRequired,
+  onChangeTechnique: PropTypes.func.isRequired,
+  clearFilters: PropTypes.func.isRequired
 };
 
 export default FilterNav;

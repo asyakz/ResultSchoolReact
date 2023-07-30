@@ -1,22 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './redactorTable.scss';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getJewelryTypes } from '../../../store/jewelryTypes';
 import { getMaterials } from '../../../store/materials';
 import { getTechniques } from '../../../store/techniques';
 import { getColors } from '../../../store/colors';
-import { getJewelriesList } from '../../../store/jewelries';
+import { deleteJewerly, getJewelriesList } from '../../../store/jewelries';
 
 const RedactorTable = () => {
   let id = self.crypto.randomUUID();
-  console.log(id);
+  const dispatch = useDispatch();
   const jewelries = useSelector(getJewelriesList());
+  const [jewelriesList, setList] = useState(jewelries);
   const jewelryTypes = useSelector(getJewelryTypes());
   const materials = useSelector(getMaterials());
   const techniques = useSelector(getTechniques());
   const colors = useSelector(getColors());
 
+  const handleDelete = (jewId) => {
+    dispatch(deleteJewerly(jewId));
+    setList(jewelriesList.filter((j) => j._id !== jewId));
+  };
+  useEffect(() => {}, [jewelries]);
   return (
     <table className='redactor-table'>
       <thead className='redactor-table__header'>
@@ -33,9 +39,9 @@ const RedactorTable = () => {
           <td>{'Действия'}</td>
         </tr>
       </thead>
-      {jewelries && jewelryTypes && materials && techniques && colors && (
+      {jewelriesList && jewelryTypes && materials && techniques && colors && (
         <tbody key={id}>
-          {jewelries.map((item) => (
+          {jewelriesList.map((item) => (
             <tr key={id} className='redactor-table__row'>
               <td key={id}>{item._id}</td>
               <td key={id}>{item.name}</td>
@@ -75,7 +81,12 @@ const RedactorTable = () => {
               <td key={id}>{item.photo}</td>
               <td key={id}>{item.description}</td>
               <td>
-                <button className='redactor-table__btn-delete'>Удалить</button>
+                <button
+                  className='redactor-table__btn-delete'
+                  onClick={() => handleDelete(item._id)}
+                >
+                  Удалить
+                </button>
                 <button className='redactor-table__btn-change'>
                   <Link to={`${item._id}/edit`}>Изменить</Link>
                 </button>

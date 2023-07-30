@@ -1,28 +1,26 @@
 import React from 'react';
 import './jewelryList.scss';
-import { getJewelriesList } from '../../../store/jewelries';
-import { useSelector } from 'react-redux';
 import JewelryCard from '../jewelryCard/jewelryCard';
+import PropTypes from 'prop-types';
 
-const JewelryList = () => {
-  const jewelries = useSelector(getJewelriesList());
-
+const JewelryList = ({ jewelries }) => {
   return (
     <>
       {jewelries && (
         <>
           <ul className='jewelry-list'>
             {jewelries.map((item) => (
-              <JewelryCard
-                key={self.crypto.randomUUID()}
-                jewerelyId={item._id}
-              />
+              <JewelryCard key={item._id} jewerelyId={item._id} />
             ))}
           </ul>
         </>
       )}
     </>
   );
+};
+
+JewelryList.propTypes = {
+  jewelries: PropTypes.array.isRequired
 };
 
 export default JewelryList;

@@ -40,6 +40,7 @@ export const loadJewelryTypesList = () => async (dispatch, getState) => {
     try {
       const { content } = await jewelryTypeService.get();
       dispatch(jewelryTypesReceived(content));
+      console.log('loadJewelryTypesList finish');
     } catch (error) {
       dispatch(jewelryTypesRequestFailed(error.message));
     }
@@ -48,7 +49,6 @@ export const loadJewelryTypesList = () => async (dispatch, getState) => {
 
 export const getJewelryTypes = () => (state) => state.jewelryTypes.entities;
 export const getJewelryTypeById = (jewelryTypeId) => (state) => {
-  console.log('all types', state.jewelryTypes.entities);
   if (state.jewelryTypes.entities) {
     return state.jewelryTypes.entities.find((jt) => jt._id === jewelryTypeId);
   }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import './editJewelryPage.scss';
 import TextField from '../../common/form/textField';
 import SelectField from '../../common/form/selectField';
@@ -23,6 +23,7 @@ import { getJewelryById, updateJewerly } from '../../../store/jewelries';
 
 const EditJewelryPage = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState();
   const jewelry = useSelector(getJewelryById(id));
@@ -72,6 +73,7 @@ const EditJewelryPage = () => {
         colors: data.colors.map((q) => q.value)
       })
     );
+    navigate('/redactor');
   };
 
   function getMaterialsListByIds(materialsIds) {

@@ -10,6 +10,7 @@ import { getMaterials } from '../../../store/materials';
 import { getTechniques } from '../../../store/techniques';
 import { getColors } from '../../../store/colors';
 import { newJewelry } from '../../../store/jewelries';
+import { useNavigate } from 'react-router-dom';
 
 const CreateJewelryPage = () => {
   const [data, setData] = useState({
@@ -20,6 +21,7 @@ const CreateJewelryPage = () => {
     techniques: [],
     description: false
   });
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const materials = useSelector(getMaterials());
   const materialsList = materials.map((q) => ({
@@ -62,6 +64,7 @@ const CreateJewelryPage = () => {
         colors: data.colors.map((q) => q.value)
       })
     );
+    navigate('/');
   };
 
   // const validatorConfig = {

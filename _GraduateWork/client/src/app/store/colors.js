@@ -35,8 +35,8 @@ export const loadColorsList = () => async (dispatch, getState) => {
     dispatch(colorsRequested());
     try {
       const { content } = await colorsService.get();
-      console.log('loaded colors...', content);
       dispatch(colorsReceived(content));
+      console.log('loadColorsList finish');
     } catch (error) {
       dispatch(colorsRequestFailed(error.message));
     }

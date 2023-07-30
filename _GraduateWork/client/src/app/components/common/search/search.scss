@@ -1,12 +1,15 @@
-@import '../../../colors';
+@import '../../../../colors.scss';
 
 .search {
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-left: 100px;
 
   &__text {
-    color: $black-color;
+    color: $white-color;
+    margin-right: 15px;
+    padding-bottom: 15px;
   }
 }
 

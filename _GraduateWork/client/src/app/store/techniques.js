@@ -37,6 +37,7 @@ export const loadTechniquesList = () => async (dispatch, getState) => {
     try {
       const { content } = await techniquesService.get();
       dispatch(techniquesReceived(content));
+      console.log('loadTechniquesList finish');
     } catch (error) {
       dispatch(techniquesRequestFailed(error.message));
     }

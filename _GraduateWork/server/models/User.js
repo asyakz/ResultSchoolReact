@@ -7,14 +7,11 @@ const schema = new Schema({
     required: true,
     unique: true
   },
-  password: String,
-  image: String,
-  sex: {
-    type: String,
-    enum: ['male', 'female']
-  }
-}, {
-  timestamps: true
+  password: {
+    type: String, 
+    required: true
+  },
+  isAdmin: {type: Boolean, default: false}
 })
 
 module.exports = model('User', schema)

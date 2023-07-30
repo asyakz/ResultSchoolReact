@@ -36,15 +36,14 @@ const jewelriesSlice = createSlice({
       state.error = action.payload;
       state.isLoading = false;
     },
-    authRequestSuccess: (state, action) => {
-      state.auth = action.payload;
-      state.isLoggedIn = true;
-    },
     jewelryCreated: (state, action) => {
       if (!Array.isArray(state.entities)) {
         state.entities = [];
       }
       state.entities.push(action.payload);
+    },
+    jewelryDeleteSuccessed: (state, action) => {
+      state.entities = state.entities.filter((j) => j._id !== action._id);
     },
     jewelryUpdateSuccessed: (state, action) => {
       state.entities[
@@ -60,13 +59,15 @@ const {
   jewelriesReceived,
   jewelriesRequestFailed,
   jewelryCreated,
-  jewelryUpdateSuccessed
+  jewelryUpdateSuccessed,
+  jewelryDeleteSuccessed
 } = actions;
 
 const jewelryCreateRequested = createAction('jewelries/jewelryCreateRequested');
 const createJewelryFailed = createAction('jewelries/createJewelryFailed');
 const jewelryUpdateRequested = createAction('jewelries/jewelryUpdateRequested');
 const jewelryUpdateFailed = createAction('jewelries/jewelryUpdateFailed');
+const jewelryDeleteFailed = createAction('jewelries/jewelryDeleteFailed');
 
 export const newJewelry = (jewelry) => async (dispatch) => {
   dispatch(createJewelry(jewelry));
@@ -89,8 +90,8 @@ export const loadJewelriesList = () => async (dispatch) => {
   dispatch(jewelriesRequested());
   try {
     const { content } = await jewelryService.get();
-    console.log('loadJewelriesList', content);
     dispatch(jewelriesReceived(content));
+    console.log('loadJewelriesList finish');
   } catch (error) {
     dispatch(jewelriesRequestFailed(error.message));
   }
@@ -100,15 +101,21 @@ export const updateJewerly = (payload) => async (dispatch) => {
   try {
     const { content } = await jewelryService.update(payload, payload._id);
     dispatch(jewelryUpdateSuccessed(content));
-    history.push(`/jewerlies/${content._id}`);
   } catch (error) {
     dispatch(jewelryUpdateFailed(error.message));
   }
 };
 
+export const deleteJewerly = (id) => async (dispatch) => {
+  try {
+    const { content } = await jewelryService.delete(id);
+    dispatch(jewelryDeleteSuccessed(content._id));
+  } catch (error) {
+    dispatch(jewelryDeleteFailed(error.message));
+  }
+};
 export const getJewelriesList = () => (state) => state.jewelries.entities;
 export const getJewelryById = (jewelryId) => (state) => {
-  console.log('state.jewelries.entities', state.jewelries.entities);
   if (state.jewelries.entities) {
     return state.jewelries.entities.find((j) => j._id === jewelryId);
   }
@@ -116,5 +123,4 @@ export const getJewelryById = (jewelryId) => (state) => {
 export const getDataStatus = () => (state) => state.jewelries.dataLoaded;
 export const getJewelriesLoadingStatus = () => (state) =>
   state.jewelries.isLoading;
-
 export default jewelriesReducer;

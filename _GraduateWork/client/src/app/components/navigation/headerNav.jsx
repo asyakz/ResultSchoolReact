@@ -1,8 +1,22 @@
 import React from 'react';
 import './headerNav.scss';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  currentUserIsAdmin,
+  getCurrentUserName,
+  logOut
+} from '../../store/users';
 
 const HeaderNav = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const handleLogOut = () => {
+    dispatch(logOut());
+    navigate('/');
+  };
+  const userName = useSelector(getCurrentUserName());
+  const isAdmin = useSelector(currentUserIsAdmin());
   return (
     <div className='header-nav'>
       <div className='header-nav__container'>
@@ -22,11 +36,16 @@ const HeaderNav = () => {
               Контакты
             </NavLink>
           </li>
-          <li className='header-nav__item'>
-            <NavLink className='header-nav__link link__redactor' to='/redactor'>
-              Редактор
-            </NavLink>
-          </li>
+          {isAdmin && (
+            <li className='header-nav__item'>
+              <NavLink
+                className='header-nav__link link__redactor'
+                to='/redactor'
+              >
+                Редактор
+              </NavLink>
+            </li>
+          )}
           <li className='header-nav__item  header-nav__basket'>
             <NavLink className='header-nav__link link-basket' to='/basket'>
               Корзина
@@ -61,22 +80,31 @@ const HeaderNav = () => {
         </ul>
       </div>
       <div className='header-login'>
-        <NavLink className='header-nav__link' to='/login'>
-          <svg
-            className='svg-login'
-            width='13'
-            height='13'
-            viewBox='0 0 13 13'
-            fill='none'
-            xmlns='http://www.w3.org/2000/svg'
-          >
-            <path
-              d='M5.12056 9.09278L6.13889 10.1111L9.75 6.5L6.13889 2.88889L5.12056 3.90722L6.98389 5.77778H0V7.22222H6.98389L5.12056 9.09278ZM11.5556 0H1.44444C0.642778 0 0 0.65 0 1.44444V4.33333H1.44444V1.44444H11.5556V11.5556H1.44444V8.66667H0V11.5556C0 12.35 0.642778 13 1.44444 13H11.5556C12.35 13 13 12.35 13 11.5556V1.44444C13 0.65 12.35 0 11.5556 0Z'
-              fill='white'
-            />
-          </svg>
-          Вход/Регистрация
-        </NavLink>
+        {userName === '' ? (
+          <NavLink className='header-nav__link' to='/login'>
+            <svg
+              className='svg-login'
+              width='13'
+              height='13'
+              viewBox='0 0 13 13'
+              fill='none'
+              xmlns='http://www.w3.org/2000/svg'
+            >
+              <path
+                d='M5.12056 9.09278L6.13889 10.1111L9.75 6.5L6.13889 2.88889L5.12056 3.90722L6.98389 5.77778H0V7.22222H6.98389L5.12056 9.09278ZM11.5556 0H1.44444C0.642778 0 0 0.65 0 1.44444V4.33333H1.44444V1.44444H11.5556V11.5556H1.44444V8.66667H0V11.5556C0 12.35 0.642778 13 1.44444 13H11.5556C12.35 13 13 12.35 13 11.5556V1.44444C13 0.65 12.35 0 11.5556 0Z'
+                fill='white'
+              />
+            </svg>
+            Вход/Регистрация
+          </NavLink>
+        ) : (
+          <div className='login-name-container'>
+            <span className='login-name'>{userName}</span>
+            <button onClick={handleLogOut} className='exit-btn'>
+              Выход
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
